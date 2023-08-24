@@ -18,6 +18,8 @@ Black_Dragon is an optional component of DragonSuite. It consists of a sample Fl
 
 To begin working with the DragonSuite project, it is recommended to use the provided `setup.sh` script. The script is tailored for Linux environments but can be adapted for Windows. The setup process involves configuring and launching the various components of the suite, allowing you to quickly set up your TOR-based infrastructure.
 
+After the `setup.sh` runs to completion, launch the project using `python3 Dragon_Suite.py`.  The user will be presented with a menu based system, allowing control of a single portion of the project.  For this reason, if the user wants to run all portions of the project on a single computer, it might be easiest to open a new terminal (or tab) for each functionality desired.  
+
 ## Generating Vanity .onion Addresses
 
 DragonSuite utilizes the `mkp224o` project to generate vanity TOR `.onion` addresses. The process is menu-based, and the Python scripts are well-commented to guide you through modifications for future development. Vanity addresses provide a personalized touch to your TOR services, making them more memorable and recognizable.
