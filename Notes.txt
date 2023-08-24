@@ -1,0 +1,29 @@
+CORE functionality:
+- Crimson Dragon is the Proxy and sender
+- Golden Dragon is the Hidden Service
+- Black Dragon is a Python Flask website <----- default config runs on 127.0.0.1:8080 to prevent IP leaks and avoids conflict on port 80.
+
+** Ensure there's no spaces in the directory path where this is setup.  Some commands were irritating and I didn't feel like fixing it right now **
+** if .onion isn't loading... check to make sure hidden_service and torrc actually copied over. 
+    - docker exec -it Golden_Dragon sh
+    - if they're not in /var/lib/tor.... then it's broke
+    - remove image with docker rmi Golden_Dragon then run again to make new image!
+
+** If docker-compose up pukes...
+    - docker-compose rm --all
+
+** hidden service directory needs 700 permission
+
+1. Run setup.sh to install Docker, TOR Browser, and Vanity Address Generator
+2. Run Golden_Dragon to start TOR hidden Service
+    - since we're not using this as a tor proxy, the SOCKS PORT listens on port 8050 instead of 9050 
+    - this prevents interference with Crimson_Dragon's Proxy if on same machne
+    - Hidden Service only answers requests from 127.0.0.1, port 8080 to prevent IP leakage
+3. Run Crimson_Dragon to start TOR proxy and data source 
+    - need to generate .ONION first then we can push it to Crimson_Dragon
+    - proxy only answers requests from 127.0.0.1
+4. Run Black_Dragon to start the webserver / listening post
+    - will serve the page located in /templates
+    - /static contains the images embedded in index.html
+    - can handle GET and POST requests sent from Crimson_Dragon
+    - can handle GET requests via TOR Browser for URL parameters. POST requests untested.

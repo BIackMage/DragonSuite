@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1 {
+            margin-top: 10em;
+            text-align: center;
+            color: purple;
+            display: block;
+            font-size: 4em;
+            margin-top: 0.67em;
+            font-weight: bold;
+        }
+
+        h2 {
+
+            text-align: center;
+            color: purple;
+            display: block;
+            font-size: 3em;
+            margin-top: 0.67em;
+            font-weight: bold;
+        }
+
+        h3 {
+
+            text-align: center;
+            color: white;
+            display: block;
+            font-size: 1em;
+            margin-top: 0.67em;
+            font-weight: bold;
+        }
+
+        p {
+            text-indent: 30pt;
+            text-align: left;
+            color: white;
+            display: block;
+            font-size: 2em;
+            margin-top: 0.67em;
+            font-weight: bold;
+        }
+
+        a {
+            font-size: 20px
+        }
+
+        div {
+            text-align: center;
+            margin-top: 10em;
+            margin-bottom: 10em;
+            margin-left: 5em;
+            margin-right: 5em;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        figcaption {
+            color: white;
+            font-size: 2em;
+        }
+
+        img.purple {
+            background-color: purple;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img.white {
+            background-color: white;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img.purple {
+            background-color: black;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome to the DARK WEB</h1>
+    <h2>Here's your hooded cloak!</h2>
+    <img class=purple src="static/surveillance.svg" alt="Sneaky" style="width:50%;">
+
+    <div>
+        <h2>What is the DARK WEB???</h2>
+        <p>
+            Information exists at multiple levels of accessibility on the Internet. What most people are familiar with
+            is the ClearNet. Nestled within the Clearnet is the Deep Web. Finally, the Dark Web exists in tandem with
+            the other two, however, inaccessible without the use of special browsers or libraries.
+        </p>
+
+        <p>
+            The Clearnet is what most people are familiar with, consisting of websites that are freely available for
+            browsing without needing to authenticate for access. These sites and servers contain unencrypted data, with
+            the exception of HTTPS traffic being encrypted on the wire. An example of this would be a blog site where
+            users do not log in.
+        </p>
+
+        <p>
+            The Deep Web can sometimes be conflated with the Clearnet as they're both accessible via normal browsing.
+            This level contains all the data, servers, and web pages that require authentication to access their data.
+            Examples include banking, social media, video streaming, and databases. The only difference between the Deep
+            Web and the Clearnet is the requirement for legitimate credentials. Additionally, some websites (such as
+            YouTube) can provide service in both the Clearnet and Deep Web domains.
+        </p>
+
+        <p>
+            The Dark Web does not make the distinction of authenticated/non-authenticated users as it exists in both
+            forms. However, there is a technological difference when compared to the ClearNet and Deep Web. Data in this
+            domain is triple encrypted while in transit and exists at .Onion urls, inaccessible to normal browsers.
+        </p>
+    </div>
+
+    <div>
+        <img class=purple src="static/tor-logo@2x.png" alt="Tor Logo" style="width:50%;">
+        <h2>What is TOR (The Onion Routing)???</h2>
+        <p>
+            TOR is a tool that provides privacy and anonymity when browsing Internet websites (not restricted to the
+            Dark Web). TOR works by using a layered encryption model to protect against traffic analysis with tools such
+            as WireShark. Additionally, not only is the data protected, but the identities of the sender and receiver
+            (user and destination) are protected as well.
+        </p>
+
+        <p>
+            TOR was initially proposed and developed by the Office of Naval Research (ONR) with assistance from DARPA
+            between 1995 - 1997. The TOR Project was funded by multiple sponsors since then. It is currently the 3rd
+            generation of Onion Routing and has been open sourced since 2003.
+        </p>
+        <p>
+            Fun fact: TOR gets its name from the way its encryption has layers... like an onion or an ogre.
+        </p>
+    </div>
+    <div>
+        <h2>How does TOR work??</h2>
+        <p>
+            Tor is essentially a 3-tiered Virtual Private Network (VPN) tunnel. The 3-tiers consist of Guard, middle,
+            and exit relays. Each relay has its own encryption and can view diffent parts of the packet (data and
+            sender/receiver) but not all of the data. Upon initialization (and other points later on), a Circuit is
+            created, deciding which Guard, relay, and exit relay will be used for communications. TOR Browser creates
+            multiple circuits and destroys/recreates on a regular time basis.
+        </p>
+        <p> When an .Onion request is made, the Client performs multiple encrptions: <br>
+            1. The Client encrypts the original data in such a way that only the exit relay can decrypt it. <br>
+            2. This encrypted data is then encrypted again in such a way that only the middle relay can decrypt it. <br>
+            3. Finally, this encrypted data is encrypted once more in such a way that only the Guard relay can decrypt
+            it.
+        </p>
+
+        <p>The connection is then made to the Guard relay which decrypts its outermost layer, exposing a nested
+            encrypted packet and the address of the middle relay. The Guard relay is the ONLY relay that knows the
+            source of the data. However it does not know the destination nor the contents of the data.
+        </p>
+        <p>The middle relay receives the forwarded packet and decrypts the middle layer of encryption. It is only able
+            to see an encrypted packet, the Guard relay address, and the exit relay address. Source, destination, and
+            contents are all invisible to the middle relay.
+        </p>
+        <p>The exit relay receives the final encrypted packet. It then decrypts the final layer of encryption and
+            forwards the packet to the final routing point. It is able to see the final destination and the data
+            contents, however the source of that packet is invisible to a exit relay. If the contents of the packet are
+            unencrypted (i.e. HTTP), the data may be visible in plain text to the Guard relay. It is HIGHLY recommended
+            to visit websites strictly over HTTPS for this reason (as HTTPS encrypts the data in transit).</p>
+        <img class=purple src="static/onion_encryption.png" alt="Tor 3-Tiered Encryption" style="width:80%;">
+        <figcaption>Tor 3-Layered Encryption Scheme</figcaption>
+    </div>
+    <div>
+        <h2>What's a Hidden Service??</h2>
+        <p>Superfically, it's just a website over TOR! At a more technical level, it's a website that utilizes the TOR
+            proxy in a similar manner as any Client (i.e. Tor Browser). This means that circuits are generated with
+            Guard, Middle, and Exit relays. This also means that the data and privacy protections are provided to the
+            Hidden Service too!</p>
+    </div>
+    <div>
+        <h2>How does a Hidden Service work??</h2>
+        <p> Just like with a Client, a TOR proxy is started, but with additional parameters. These parameters specify
+            the files containing the .onion address and the public/private keys. As a nice feature, MULTIPLE Hidden
+            Services can use the same TOR proxy (simply add their details to the configuration). Additionally, the TOR
+            proxy needs to be configured to receive HTTP and/or HTTPS traffic (HTTPS is preferred and HTTP SHOULD
+            redirect to HTTPS or not be accepted).
+        </p>
+        <p> When connecting to a TOR Hidden Service, the process is slightly different than connecting to a Clearnet
+            website. With a Clearnet website, the Client (user) generates a circuit for communications. When browsing to
+            a Hidden Service, both the Client AND Hidden Service generate their own circuits. Inside the TOR network, a
+            "rendezvous" point is determined and communications are exchanged there, rather than leaving the TOR network
+            at either end. This allows for continued privacy and anonymity protection for BOTH Client and Hidden
+            Service.
+        </p>
+    </div>
+
+    <div>
+        <h2>Links to resources</h2>
+        <a href="https://www.torproject.org">TOR PROJECT</a> <br>
+        <a href="https://community.torproject.org/onion-services/setup/">TOR Hidden Service Instructions</a> <br>
+        <a href="https://en.wikipedia.org/wiki/Tor_(network)">TOR on WikiPedia</a><br>
+        <a href="https://tails.boum.org/">TAILS OS</a><br>
+        <a href="https://stem.torproject.org/">Python Stem Library</a><br>
+        <a href="https://Guardianproject.info/apps/org.torproject.android/">Orbot - Andoid TOR access</a><br>
+    </div>
+</body>
+
+<footer>
+    <h3>
+        Copyright 2022 Michael Dimitrievski
+    </h3>
+    <h3>
+        {{ message }}
+    </h3>
+</footer>
+
+</html>
