@@ -22,9 +22,11 @@ After the `setup.sh` runs to completion, launch the project using `python3 Drago
 
 ## Generating Vanity .onion Addresses
 
-DragonSuite utilizes the `mkp224o` project to generate vanity TOR `.onion` addresses. The process is menu-based, and the Python scripts are well-commented to guide you through modifications for future development. Vanity addresses provide a personalized touch to your TOR services, making them more memorable and recognizable.
+DragonSuite utilizes the `mkp224o` project to generate vanity TOR `.onion` addresses. Vanity addresses provide a personalized touch to your TOR services, making them more memorable and recognizable.
 
-Feel free to explore and modify the DragonSuite components according to your needs. The suite provides a comprehensive set of tools for working with TOR services, data manipulation, and secure communication.
+## DragonSuite Usage
+
+DragonSuite is entirely menu-based, and the Python scripts are well-commented to guide you through modifications for future development. Feel free to explore and modify the project components according to your needs. 
 
 Please note that while the project's primary focus is on Linux environments, it is possible to adapt the components for Windows usage, especially the final Docker containers.
 
